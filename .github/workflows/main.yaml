@@ -16,7 +16,7 @@ jobs:
   call-docker-build:
     permissions:
       contents: read
-    uses: ycpss91255-lab/base/.github/workflows/build-worker.yaml@v0.43.0-rc6
+    uses: ycpss91255-lab/base/.github/workflows/build-worker.yaml@8a95dbe5dda277c0f676b9be0b5a01e1903b2f8a
     with:
       image_name: urg_node_noetic
       build_args: |
@@ -29,7 +29,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     permissions:
       contents: write
-    uses: ycpss91255-lab/base/.github/workflows/release-worker.yaml@v0.43.0-rc6
+    uses: ycpss91255-lab/base/.github/workflows/release-worker.yaml@8a95dbe5dda277c0f676b9be0b5a01e1903b2f8a
     with:
       archive_name_prefix: urg_node_noetic
     secrets: inherit
