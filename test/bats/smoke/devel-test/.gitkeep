@@ -1,0 +1,2 @@
+# Reserved for devel-test-only smoke specs. Empty until a devel-test
+# specific assertion is added; the shared/ baseline still runs here.

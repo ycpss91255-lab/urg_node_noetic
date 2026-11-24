@@ -1,0 +1,5 @@
+# Reserved for runtime-test-only smoke specs (opt-in runtime split). Empty
+# until the runtime stage is enabled and a runtime-specific assertion is
+# added; the shared/ baseline still runs here. The placeholder keeps the
+# folder present so the Dockerfile's commented-out runtime-test COPY block
+# resolves the moment the split is turned on.

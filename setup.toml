@@ -1,0 +1,69 @@
+[[image.rules]]
+rule = "prefix:docker_"
+
+[[image.rules]]
+rule = "suffix:_ws"
+
+[[image.rules]]
+rule = "@basename"
+
+[build]
+target_arch = ""
+network = "auto"
+
+[[build.args]]
+key = "APT_MIRROR_UBUNTU"
+value = "tw.archive.ubuntu.com"
+
+[[build.args]]
+key = "APT_MIRROR_DEBIAN"
+value = "mirror.twds.com.tw"
+
+[[build.args]]
+key = "TZ"
+value = "Asia/Taipei"
+
+[deploy]
+gpu_mode = "auto"
+gpu_count = "all"
+gpu_capabilities = "gpu compute utility graphics"
+gpu_runtime = "auto"
+
+[gui]
+mode = "auto"
+
+[network]
+mode = "host"
+ipc = "host"
+network_name = ""
+ports = []
+
+[security]
+privileged = true
+cap_drop = []
+
+[[security.cap_add]]
+cap = "SYS_ADMIN"
+
+[[security.cap_add]]
+cap = "NET_ADMIN"
+
+[[security.cap_add]]
+cap = "MKNOD"
+
+[[security.security_opt]]
+opt = "seccomp:unconfined"
+
+[resources]
+shm_size = ""
+
+[devices]
+cgroup_rules = []
+
+[[devices.bindings]]
+path = "/dev:/dev"
+
+[[volumes]]
+source = "${WS_PATH}"
+target = "/home/${USER_NAME}/work"
+
