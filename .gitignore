@@ -1,7 +1,7 @@
 .env
 
 # Claude Code session state when launched inside this sub-repo.
-# Workspace-level Claude config lives in ycpss91255-docker/claude-workspace.
+# Workspace-level Claude config lives in ycpss91255-lab/claude-workspace.
 .claude
 CLAUDE.md
 
@@ -18,3 +18,14 @@ setup.conf.local
 .docker.xauth
 
 .env.generated
+.env.local
+.env.local.toml
+.env.local.bak
+env.local.toml
+.setup.conf.bak
+setup.toml.bak
+.setup.conf.local
+.setup.conf.local.bak
+setup.local.toml
+log/
+/deploy/
