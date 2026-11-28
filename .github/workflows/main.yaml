@@ -9,6 +9,8 @@ on:
     tags:
       - 'v*'
   pull_request:
+  merge_group:
+    types: [checks_requested]
   workflow_dispatch:
 
 jobs:
@@ -19,10 +21,24 @@ jobs:
     uses: ycpss91255-lab/base/.github/workflows/build-worker.yaml@v0.43.0-rc9
     with:
       image_name: urg_node_noetic
+      merge_group_same_repo: 'true'
       build_args: |
         ROS_DISTRO=noetic
         ROS_TAG=ros-base
         UBUNTU_CODENAME=focal
+
+  # 單一聚合 check，供 main merge queue ruleset 作為唯一 required check。
+  ci-rollup:
+    if: always()
+    needs: call-docker-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify required jobs
+        env:
+          BUILD_RESULT: ${{ needs.call-docker-build.result }}
+        run: |
+          echo "call-docker-build: ${BUILD_RESULT}"
+          [ "${BUILD_RESULT}" = "success" ]
 
   call-release:
     needs: call-docker-build
